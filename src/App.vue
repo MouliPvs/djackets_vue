@@ -3,13 +3,13 @@
     <!-- Navigation Bar With Dark Theme Start-->
     <nav class="navbar is-dark">
       
-      <!-- Logo -->
+      <!-- Logo Start -->
       <div class="navbar-brand">
         <!-- Nav Item Djacket -->
         <router-link to="/" class="navbar-item"><strong>Djackets</strong></router-link>
 
         <!-- Hamburger Button -->
-        <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -18,7 +18,7 @@
       <!-- Logo Ends -->
 
       <!-- Navigation Bar Menu Start-->
-      <div class="navbar-menu" id="navbar-menu">
+      <div class="navbar-menu" id="navbar-menu" :class="{'is-active' : showMobileMenu}">
 
         <!--Nav Itemts At End / right Side -->
         <div class="navbar-end">
@@ -63,6 +63,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return{
+      showMobileMenu : false,
+    }
+  },
+}
+</script>
+
 <style lang="scss">
-@import '../node_modules/bulma'
+@import '../node_modules/bulma';
 </style>
