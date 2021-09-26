@@ -5,7 +5,7 @@
       
       <!-- Logo Start -->
       <div class="navbar-brand">
-        <!-- Nav Item Djacket -->
+        <!-- Nav Item -->
         <router-link to="/" class="navbar-item"><strong>Djackets</strong></router-link>
 
         <!-- Hamburger Button -->
@@ -31,7 +31,7 @@
           <!-- Nav Items : Buttons Start -->
           <div class="navbar-item">
             <div class="buttons">
-              <!--Nav Item :  Login Start -->
+              <!--Nav Item :  Login -->
               <router-link to="/log-in" class="button is-light">Log In</router-link>
               
               <!--Nav Item :  Cart  -->
@@ -41,7 +41,7 @@
               <span class="icon"><i class="fas fa-shopping-cart"></i></span>
               <span>Cart</span>
               </router-link>  
-              <!--Nav Item :  Login End -->
+              <!--Nav Item :  Cart End -->
             </div>
           </div>
           <!-- Nav Items : Buttons End -->
@@ -50,6 +50,7 @@
       <!-- Navigation Bar Menu End-->
     </nav>
     <!-- Navigation Bar With Dark Theme Ends-->
+    
 
     <section class="section">
       <router-view/>
