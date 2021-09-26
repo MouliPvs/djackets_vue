@@ -36,10 +36,11 @@
 
         <!-- A white box to contain other elements -->
         <div class="box">
-
+          <!-- <h1>{{product}}</h1> -->
+          
           <!-- Product ThumbNail -->
           <figure class="image mb-4">
-            <img src="product.get_thumbnail">
+            <img v-bind:src="product.get_thumbnail">
           </figure>
 
           <h3 class="is-size-4">{{product.name}}</h3>
@@ -76,7 +77,7 @@ export default {
     getLatestProducts(){
     // Gets latest products details in the form of array from api/v1/latest-products
       axios
-          .get('/api/v1/latest-products/')
+          .get('/api/v1/latest-products')
           .then(response => {
             this.latestProducts = response.data
           })//response
