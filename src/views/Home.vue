@@ -46,6 +46,8 @@
           <h3 class="is-size-4">{{product.name}}</h3>
           <p class="is-size-6 has-text-gery">{{product.price}} Rs</p>
 
+          <!-- View Product Details -->
+          <router-link v-bind:to="product.get_absolute_url" class="button is-dark mt-4">View Product Details</router-link>
         </div>
       </div> <!-- Product Details End -->
 
@@ -79,6 +81,8 @@ export default {
       axios
           .get('/api/v1/latest-products')
           .then(response => {
+
+            // response.data gives array of hashes
             this.latestProducts = response.data
           })//response
           .catch(error => {
