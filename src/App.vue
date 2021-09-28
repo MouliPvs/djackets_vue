@@ -76,15 +76,23 @@ export default {
   },
   // declares and knows data properties before render the Vue component
   beforeCreate(){
-    this.$store.commit('initializeStore')
+    /**
+     * initilizeStore is a method in ../store/index.js/mutations/intializeStore(state) 
+     * Intializes The Cart
+     */
+    this.$store.commit('intializeStore')
+  },
+  mounted() {
+    /**Gets @cart object from ../store/index.js/state */
+    this.cart = this.$store.state.cart
   },
   computed: {
     cartTotalLenght() {
-      // Returns The Total No Of Items In Cart
+      /** Return: @totalLength Total No Of Items In Cart */
 
       let totalLenght = 0
 
-      // Updates The Quantity Of items In The Cart
+      /**Iterates & Counts All Items In The Cart */
       for(let i = 0; i < this.cart.items.lenght; i++){
         totalLenght += this.cart.items[i].quantity
       }

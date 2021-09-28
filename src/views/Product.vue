@@ -32,7 +32,7 @@
 
                     <!-- Add To Cart Button -->
                     <div class="control">
-                        <a class="button is-dark">Add To Cart</a>
+                        <a class="button is-dark" @click="addToCart">Add To Cart</a>
                     </div>
 
                 </div><!-- Add-To Cart Functionality --> 
@@ -75,13 +75,24 @@ export default {
                 .catch((error) => {
                     console.log(error)
                 })
+        },
+        addToCart() {
+            /**Checks If @quantity Is Number or not*/
+            if (isNaN(this.quantity) || this.quantity < 1){
+                /**If @quantity Is Not A Number We Reset It To 1*/
+                this.quantity = 1
+            }
+
+            const item = {
+                product: this.product,
+                quantity: this.quantity
+            }
+            /**Calls @addToCart method from /store/index.js/
+             * Input : item{product , quantity}
+             */
+            this.$store.commit('addToCart', item)
         }
     }
 
 }
 </script>
-
-// Array - 1 : Sorted
-// Array - 2 : Sorted
-// Array - 1 + Array 2 = Array Sort
-

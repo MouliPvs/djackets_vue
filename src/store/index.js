@@ -9,7 +9,7 @@ export default createStore({
     isAuthenticated:false,
     // Used When User Logins
     token: '',
-    // LoadingBar When User Switchs From Products
+    // LoadingBar When User Switchs Between Products
     isLoading: false,
   },
   // Synchronus
@@ -26,16 +26,19 @@ export default createStore({
         localStorage.setItem('cart' , JSON.stringify(state.cart))
       }
     },
-
     addToCart(state, item){
-      // Check the item we are trying to add in cart already exists in cart or not
+    /**Input : @item = {product , quantity} 
+     * Description : Adds Item To The Cart
+    */
+       debugger
+      /** Checks  whether the item we are trying to add in cart already exists in cart or not  */
       const exists = state.cart.items.filter(i => i.product.id == item.product.id)
-
-      // If length greater than zero then item already exists in cart 
+      /**If length greater than zero then item already exists in cart */
       if(exists.length){
-        // We first Get The object in the list since we already know that item exists
-        // Increase item.quantity By 1 or according to user input
-        // We get quantity from (Product.vue : <input type="number" class="input" min="1" v-model="quantity">)
+        /**
+         * We first Get The object in the list since we already know that item exists
+         * Increase item.quantity By 1 or according to user input
+         * We get quantity from (Product.vue : <input type="number" class="input" min="1" v-model="quantity">)  */
         exists[0].quantity = parseInt(exists[0].quantity) + parseInt(item.quantity)
       }
       // If item doesn't exist in cart we push item into cart
@@ -50,6 +53,8 @@ export default createStore({
   // Ascyncronous
   actions: {
   },
+
+
   modules: {
   }
 })
