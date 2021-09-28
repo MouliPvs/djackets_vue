@@ -39,7 +39,7 @@
 
               <!-- Cart Icon -->
               <span class="icon"><i class="fas fa-shopping-cart"></i></span>
-              <span>Cart</span>
+              <span>Cart ({{ cartTotalLenght }})</span>
               </router-link>  
               <!--Nav Item :  Cart End -->
             </div>
@@ -69,8 +69,29 @@ export default {
   data() {
     return{
       showMobileMenu : false,
+      cart: {
+        items: []
+      },
     }
   },
+  // declares and knows data properties before render the Vue component
+  beforeCreate(){
+    this.$store.commit('initializeStore')
+  },
+  computed: {
+    cartTotalLenght() {
+      // Returns The Total No Of Items In Cart
+
+      let totalLenght = 0
+
+      // Updates The Quantity Of items In The Cart
+      for(let i = 0; i < this.cart.items.lenght; i++){
+        totalLenght += this.cart.items[i].quantity
+      }
+
+      return totalLenght
+    }
+  }
 }
 </script>
 
