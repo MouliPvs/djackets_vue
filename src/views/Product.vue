@@ -61,10 +61,10 @@ export default {
     methods: {
         getProduct(){
             //Routes Should Be Declared As Constatnts
-            // stores the category_slug from url
+            // stores the category_slug param from the routes in index.js: name:Product, path: '/:category_slug/:product_slug',
             const category_slug = this.$route.params.category_slug
 
-            // stores the product_slug from url
+            // stores the product_slug param from the routes i.e index.js: name:Product, path: '/:category_slug/:product_slug',            
             const product_slug = this.$route.params.product_slug
 
             axios

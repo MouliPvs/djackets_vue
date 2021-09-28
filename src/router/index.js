@@ -19,6 +19,8 @@ const routes = [
   },
   // Dynamic Routes
   {
+    // :category_slug & :product_slug are variables
+    // Gets Route From <route-link v-bind:to="product.get_absolute_url" > View Product Details</route-link> In Home.vue 
     path: '/:category_slug/:product_slug',
     name: 'Product',
     component: Product,

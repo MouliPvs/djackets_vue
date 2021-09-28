@@ -47,6 +47,7 @@
           <p class="is-size-6 has-text-gery">{{product.price}} Rs</p>
 
           <!-- View Product Details -->
+          <!-- Sends get_absolute_url(category_slug/product_slug) to routes in index.js -->
           <router-link v-bind:to="product.get_absolute_url" class="button is-dark mt-4">View Product Details</router-link>
         </div>
       </div> <!-- Product Details Loop End -->
