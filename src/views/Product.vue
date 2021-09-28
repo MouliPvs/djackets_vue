@@ -9,7 +9,7 @@
                     <img v-bind:src="product.get_image" alt="">
                 </figure>
 
-                <!-- Product Name & Title -->
+                <!-- Product Name & Description -->
                 <h1 class="title">{{product.name}}</h1>
                 <p>{{product.description}}</p>                
             </div><!-- Product Details -->
@@ -66,8 +66,22 @@ export default {
 
             // stores the product_slug from url
             const product_slug = this.$route.params.product_slug
+
+            axios
+                .get(`/api/v1/products/${category_slug}/${product_slug}`)
+                .then((response) => {
+                    this.product = response.data
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
         }
     }
 
 }
 </script>
+
+// Array - 1 : Sorted
+// Array - 2 : Sorted
+// Array - 1 + Array 2 = Array Sort
+

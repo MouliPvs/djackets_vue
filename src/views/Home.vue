@@ -28,7 +28,7 @@
         <h2 class="is-size-2 has-text-centered">Latest Products</h2>
       </div> 
 
-      <!-- Product Details -->
+      <!-- Product Details  Loop-->
       <div 
       class="column is-3"
       v-for="product in latestProducts"
@@ -49,7 +49,7 @@
           <!-- View Product Details -->
           <router-link v-bind:to="product.get_absolute_url" class="button is-dark mt-4">View Product Details</router-link>
         </div>
-      </div> <!-- Product Details End -->
+      </div> <!-- Product Details Loop End -->
 
     </div> <!-- Latest Products End -->
  
