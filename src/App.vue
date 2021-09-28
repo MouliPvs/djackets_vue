@@ -52,6 +52,7 @@
     <!-- Navigation Bar With Dark Theme Ends-->
     
 
+    <!-- Home.vue -->
     <section class="section">
       <router-view/>
     </section>
@@ -70,7 +71,7 @@ export default {
     return{
       showMobileMenu : false,
       cart: {
-        items: []
+        items:[],
       },
     }
   },
@@ -85,19 +86,18 @@ export default {
   mounted() {
     /**Gets @cart object from ../store/index.js/state */
     this.cart = this.$store.state.cart
+    console.log(this.cart)
   },
   computed: {
     cartTotalLenght() {
       /** Return: @totalLength Total No Of Items In Cart */
-
-      let totalLenght = 0
-
+      let totalLength = 0
       /**Iterates & Counts All Items In The Cart */
-      for(let i = 0; i < this.cart.items.lenght; i++){
-        totalLenght += this.cart.items[i].quantity
+      for(let i = 0; i < this.cart.items.length; i++){
+        totalLength += this.cart.items[i].quantity
       }
 
-      return totalLenght
+      return totalLength
     }
   }
 }

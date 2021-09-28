@@ -30,10 +30,10 @@ export default createStore({
     /**Input : @item = {product , quantity} 
      * Description : Adds Item To The Cart
     */
-       debugger
       /** Checks  whether the item we are trying to add in cart already exists in cart or not  */
       const exists = state.cart.items.filter(i => i.product.id == item.product.id)
       /**If length greater than zero then item already exists in cart */
+
       if(exists.length){
         /**
          * We first Get The object in the list since we already know that item exists
