@@ -14,8 +14,11 @@ export default createStore({
   },
   // Synchronus
   mutations: {
-    // To Store Things In Local Storage Of The Browser
     intializeStore(state) {
+      /**
+       * To Store Things In Local Storage Of The Browser
+       */
+
       // Checks localStorage with item called 'cart' exists or not
       if (localStorage.getItem('cart')) {
         state.cart = JSON.parse(localStorage.getItem('cart'))

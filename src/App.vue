@@ -1,4 +1,5 @@
 <template>
+  <!-- Header Contaning Logo , Login , Cart & Banner -->
   <div id="wrapper">
     <!-- Navigation Bar With Dark Theme Start-->
     <nav class="navbar is-dark">
@@ -75,8 +76,11 @@ export default {
       },
     }
   },
-  // declares and knows data properties before render the Vue component
   beforeCreate(){
+    /**
+     * declares and knows data properties before render the Vue component
+     */
+
     /**
      * initilizeStore is a method in ../store/index.js/mutations/intializeStore(state) 
      * Intializes The Cart

@@ -1,4 +1,5 @@
 <template>
+  <!-- Displays All Latest Products -->
   <div class="home">
 
      <!-- hero component allows you to add a full width banner to your webpage -->

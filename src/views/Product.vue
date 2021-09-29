@@ -1,4 +1,5 @@
 <template>
+    <!-- Displays Single Product Details  -->
     <div class="page-product">
         <div class="columns is-multiline">
             <!-- Product Details -->
@@ -43,6 +44,7 @@
 
 <script>
 import axios from 'axios'
+import { toast } from 'bulma-toast'
 
 export default {
     name: 'Product',
@@ -91,6 +93,20 @@ export default {
              * Input : item{product , quantity}
              */
             this.$store.commit('addToCart', item)
+
+            /**
+             * Pop The Message After Item Is Added To Cart
+             */
+            toast({
+                message: 'The Product Was Added To The Cart',
+                // is-success is a class to show green
+                type: 'is-success',
+                dismissible: true,
+                pauseOnHover: true,
+                //milliseconds 
+                duration: 2000,
+                position: 'bottom-right',
+            })
         }
     }
 
