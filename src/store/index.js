@@ -30,9 +30,9 @@ export default createStore({
       }
     },
     addToCart(state, item){
-    /**Input : @item = {product , quantity} 
-     * Description : Adds Item To The Cart
-    */
+      /**Input : @item = {product , quantity} 
+       * Description : Adds Item To The Cart
+      */
       /** Checks  whether the item we are trying to add in cart already exists in cart or not  */
       const exists = state.cart.items.filter(i => i.product.id == item.product.id)
       /**If length greater than zero then item already exists in cart */
@@ -51,7 +51,13 @@ export default createStore({
 
       //Next Time if you refresh the browser everthing will be stored
       localStorage.setItem('cart' , JSON.stringify(state.cart))
-    }
+    },
+    setIsLoading(state, status){
+      /**
+       * input : @status , Type : Boolean
+       */
+      state.isLoading = status
+    },
   },
   // Ascyncronous
   actions: {

@@ -61,7 +61,15 @@ export default {
     },
 
     methods: {
-        getProduct(){
+        /**To make sure that we dont set @isLoading  false before its finsished we use 'async'*/
+        async getProduct(){
+            /**
+             * Gets Single Product Deatisl From Api 
+             * Stores It In @product 
+             */
+            
+            // Sets loading true while waiting for response
+            this.$store.commit('setIsLoading' , true)
             //Routes Should Be Declared As Constatnts
             // stores the category_slug param from the routes in index.js: name:Product, path: '/:category_slug/:product_slug',
             const category_slug = this.$route.params.category_slug
@@ -69,7 +77,11 @@ export default {
             // stores the product_slug param from the routes i.e index.js: name:Product, path: '/:category_slug/:product_slug',            
             const product_slug = this.$route.params.product_slug
 
-            axios
+            /**
+             * The await operator is used to wait for a Promise. It can only be used inside an async function within
+             * only when axios code is executed then @isLoading will be set false
+             */
+            await axios
                 .get(`/api/v1/products/${category_slug}/${product_slug}`)
                 .then((response) => {
                     this.product = response.data
@@ -77,6 +89,9 @@ export default {
                 .catch((error) => {
                     console.log(error)
                 })
+            
+            // Sets loading false after we get response 
+            this.$store.commit('setIsLoading' , false)            
         },
         addToCart() {
             /**Checks If @quantity Is Number or not*/
