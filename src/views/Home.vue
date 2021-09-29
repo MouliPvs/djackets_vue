@@ -78,9 +78,19 @@ export default {
   },
 
   methods: {
-    getLatestProducts(){
-    // Gets latest products details in the form of array from api/v1/latest-products
-      axios
+    /**To make sure that we dont set @isLoading  false before its finsished we use 'async'*/
+    async getLatestProducts(){
+      /** 
+       * Gets latest products details in the form of array from api/v1/latest-products
+      */
+      
+      // Sets loading true while waiting for response
+      this.$store.commit('setIsLoading' , true)
+      /**
+         * The await operator is used to wait for a Promise. It can only be used inside an async function within
+         * only when axios code is executed then @isLoading will be set false
+       */        
+      await axios
           .get('/api/v1/latest-products')
           .then(response => {
 
@@ -90,6 +100,7 @@ export default {
           .catch(error => {
           console.log(error)
           })//error
+      this.$store.commit('setIsLoading' , false)          
     }
   }
 }

@@ -114,6 +114,7 @@ export default {
 <style lang="scss">
 @import '../node_modules/bulma';
 
+// Loading Bar Animation
 .lds-dual-ring{
   display: inline-block;
   width: 80px;
