@@ -75,6 +75,8 @@ export default {
   // Used for fetching data
   mounted() {
     this.getLatestProducts()
+
+    document.title = 'Home | Djackets'
   },
 
   methods: {
