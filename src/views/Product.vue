@@ -68,7 +68,7 @@ export default {
              * Stores It In @product 
              */
             
-            // Sets loading true while waiting for response
+            // Sets 'is-loading' true while waiting for response
             this.$store.commit('setIsLoading' , true)
             //Routes Should Be Declared As Constatnts
             // stores the category_slug param from the routes in index.js: name:Product, path: '/:category_slug/:product_slug',

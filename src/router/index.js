@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
 import Product from '../views/Product.vue'
+import Category from '../views/Category.vue'
 
 const routes = [
   {
@@ -19,12 +20,22 @@ const routes = [
   },
   
   // Dynamic Routes
+
+  // Product.vue
   {
     // :category_slug & :product_slug are variables
     // Gets Route From <route-link v-bind:to="product.get_absolute_url" > View Product Details</route-link> In Home.vue 
     path: '/:category_slug/:product_slug',
     name: 'Product',
     component: Product,
+  },
+
+  // Category.vue
+  {
+    // :category_slug is variable
+    path: '/:category_slug',
+    name: 'Category',
+    component: Category
   }
 ]
 

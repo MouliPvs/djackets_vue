@@ -53,6 +53,7 @@
     <!-- Navigation Bar With Dark Theme Ends-->
     
   <!-- Loading Bar -->
+  <!-- 'is-loading' value is modified in Product.vue/methods/getProduct()/this.$store.commit('setIsLoading' , true) -->
   <div class="is-loading-bar has-text-centered" v-bind:class="{'is-loading' : $store.state.isLoading}">
     <div class="lds-dual-ring"></div>
   </div>

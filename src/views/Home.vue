@@ -1,5 +1,5 @@
 <template>
-  <!-- Displays All Latest Products -->
+                              <!-- Displays All Latest Products -->
   <div class="home">
 
      <!-- hero component allows you to add a full width banner to your webpage -->
@@ -29,29 +29,11 @@
         <h2 class="is-size-2 has-text-centered">Latest Products</h2>
       </div> 
 
-      <!-- Product Details  Loop-->
-      <div 
-      class="column is-3"
-      v-for="product in latestProducts"
-      v-bind:key="product.id">
-
-        <!-- A white box to contain other elements -->
-        <div class="box">
-          <!-- <h1>{{product}}</h1> -->
-          
-          <!-- Product ThumbNail -->
-          <figure class="image mb-4">
-            <img v-bind:src="product.get_thumbnail">
-          </figure>
-
-          <h3 class="is-size-4">{{product.name}}</h3>
-          <p class="is-size-6 has-text-gery">{{product.price}} Rs</p>
-
-          <!-- View Product Details -->
-          <!-- Sends get_absolute_url(category_slug/product_slug) to routes in index.js -->
-          <router-link v-bind:to="product.get_absolute_url" class="button is-dark mt-4">View Product Details</router-link>
-        </div>
-      </div> <!-- Product Details Loop End -->
+      <!-- Sending @product object to ./components/ProductBox.vue -->
+      <ProductBox
+          v-for="product in latestProducts"
+          v-bind:key="product.id"
+          v-bind:product="product" />
 
     </div> <!-- Latest Products End -->
  
@@ -62,6 +44,8 @@
 // For getting data from backend
 import axios from 'axios'
 
+import ProductBox from '@/components/ProductBox'
+
 export default {
   name: 'Home',
   data() {
@@ -70,6 +54,7 @@ export default {
     }
   },
   components: {
+    ProductBox
   },
 
   // Used for fetching data
@@ -109,10 +94,4 @@ export default {
 </script>
 
 <style scoped>
-  /* Removes empty spaces around the image  */
-  .image {
-    margin-top: -1.25rem;
-    margin-left: -1.25rem;
-    margin-right: -1.25rem;
-  }
 </style>
