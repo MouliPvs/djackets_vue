@@ -5,29 +5,13 @@
                 <h2 class="is-size-2 has-text-centered">{{ category.name }}</h2>
             </div>
 
-            <!-- Category Products Details Loop-->
-            <div 
-            class="column is-3"
-            v-for="product in category.products"
-            v-bind:key="product.id">
+            <!-- Sends  latestProduct i.e @product object to ./components/ProductBox.vue -->
+            <!-- Displays Four Latest Products -->
+           <ProductBox
+          v-for="product in category.products"
+          v-bind:key="product.id"
+          v-bind:product="product" />
 
-                <!-- A white box to contain other elements -->
-                <div class="box">
-                <!-- <h1>{{product}}</h1> -->
-                
-                <!-- Product ThumbNail -->
-                <figure class="image mb-4">
-                    <img v-bind:src="product.get_thumbnail">
-                </figure>
-
-                <h3 class="is-size-4">{{product.name}}</h3>
-                <p class="is-size-6 has-text-gery">{{product.price}} Rs</p>
-
-                <!-- View Product Details -->
-                <!-- Sends get_absolute_url(category_slug/product_slug) to routes in index.js -->
-                <router-link v-bind:to="product.get_absolute_url" class="button is-dark mt-4">View Product Details</router-link>
-                </div>
-            </div> <!--Category Products Details Loop End -->
         </div>
     </div>
 </template>
@@ -35,6 +19,8 @@
 <script>
 import axios from 'axios'
 import { toast } from 'bulma-toast'
+
+import ProductBox from '@/components/ProductBox'
 
 export default {
     name: 'Category',
@@ -45,11 +31,30 @@ export default {
             }
         }
     },
+    components: {
+        ProductBox
+    },
     mounted(){
         this.getCategory()
     },
+    /**
+     * Watch For Changes When You Switch Between Categories i.e @categorySlug
+     */
+    watch: {
+        $route(to , from) {
+            /**
+             * Call @getCategory when user changes the category
+             */
+            if(to.name == 'Category') {
+                this.getCategory()
+            }
+        }
+    },
     methods: {
         async getCategory() {
+            /**
+             * Gets category object(Array Of Hashes) from backend & stores in @category
+             */
             const categorySlug = this.$route.params.category_slug 
 
              this.$store.commit('setIsLoading' , true)

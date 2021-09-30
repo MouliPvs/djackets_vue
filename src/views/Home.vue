@@ -29,7 +29,8 @@
         <h2 class="is-size-2 has-text-centered">Latest Products</h2>
       </div> 
 
-      <!-- Sending @product object to ./components/ProductBox.vue -->
+      <!-- Sends  latestProduct i.e @product object to ./components/ProductBox.vue -->
+      <!-- Displays Four Latest Products -->
       <ProductBox
           v-for="product in latestProducts"
           v-bind:key="product.id"
